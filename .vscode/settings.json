@@ -6,5 +6,6 @@
         "truetype",
         "unmount",
         "webfont"
-    ]
+    ],
+    "tslint.exclude": "./node_modules"
 }
