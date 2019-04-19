@@ -1,4 +1,9 @@
 # TODO
+- [ ] typescript
+- [ ] github pages
+- [ ] React components with dummy data
+- [ ] redux
+- [ ] redux middleware to hook up API
 
 ## Component Tree
 - App
