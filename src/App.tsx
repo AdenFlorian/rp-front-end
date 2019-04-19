@@ -1,31 +1,11 @@
 import React, {Component} from 'react'
-import logo from './logo.svg'
 import './App.scss'
-import SpaceBackgroundImage from './background.jpg'
 
 class App extends Component {
   render() {
     return (
-      <div
-        className="App"
-        style={{
-          backgroundImage: `url(${SpaceBackgroundImage})`
-        }}
-      >
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hello R&P!
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="App">
+        <h1 className="App-header">SpaceX Launches</h1>
       </div>
     )
   }
