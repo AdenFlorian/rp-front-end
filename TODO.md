@@ -3,6 +3,7 @@
 - [√] github pages
 - [√] SASS
 - [ ] React components with dummy data
+    - [√] background image
 - [ ] redux
 - [ ] redux middleware to hook up API
 
