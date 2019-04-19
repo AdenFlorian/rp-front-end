@@ -4,6 +4,8 @@
 - [√] SASS
 - [ ] React components with dummy data
     - [√] background image
+    - [√] tab title
+    - [ ] page heading
 - [ ] redux
 - [ ] redux middleware to hook up API
 
