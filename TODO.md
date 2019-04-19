@@ -1,6 +1,7 @@
 # TODO
 - [√] typescript
 - [√] github pages
+- [√] SASS
 - [ ] React components with dummy data
 - [ ] redux
 - [ ] redux middleware to hook up API
