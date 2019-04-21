@@ -17,7 +17,7 @@ const data = List([
     rocketName: 'Falcon 9',
     rocketType: 'Merlin A',
     launchDate: '03/25/2006',
-    details: 'Engine failure at 99 seconds and RUD',
+    details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
     id: '2',
     articleLink: 'http://example.com'
   },
@@ -33,13 +33,13 @@ class App extends Component {
           </div>
           <table className="rocketLaunchesTable">
             <tr>
-              <th>Badge</th>
-              <th>Rocket Name</th>
-              <th>Rocket Type</th>
-              <th>Launch Date</th>
-              <th>Details</th>
-              <th>ID</th>
-              <th>Article</th>
+              <th className="badge">Badge</th>
+              <th className="rocketName">Rocket Name</th>
+              <th className="rocketType">Rocket Type</th>
+              <th className="launchDate">Launch Date</th>
+              <th className="details">Details</th>
+              <th className="id">ID</th>
+              <th className="articleLink">Article</th>
             </tr>
             {data.map(entry => {
               return (

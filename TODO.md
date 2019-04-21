@@ -6,6 +6,7 @@
     - [√] background image
     - [√] tab title
     - [√] page heading
+    - [ ] styling to match design mockups
 - [ ] redux
 - [ ] redux middleware to hook up API
 
