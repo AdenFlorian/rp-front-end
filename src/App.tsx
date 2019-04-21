@@ -21,6 +21,12 @@ const initialState = List([
 export const App = () => {
   const [data, setData] = useState(initialState)
 
+  const [filters, setFilters] = useState({
+    successfulLandings: true,
+    reused: false,
+    reddit: false,
+  })
+
   useEffect(() => {
     (async () => loadLatestLaunchData())()
   }, [])
@@ -44,15 +50,15 @@ export const App = () => {
           </div>
           <div className="filters">
             <div className="checkboxWrapper">
-              <input name="landSuccess" type="checkbox" />
+              <input name="landSuccess" type="checkbox" checked={filters.successfulLandings} onChange={({target: {checked}}) => setFilters({...filters, successfulLandings: checked})} />
               <label htmlFor="landSuccess">Land Success</label>
             </div>
             <div className="checkboxWrapper">
-              <input name="reused" type="checkbox" />
+              <input name="reused" type="checkbox" checked={filters.reused} onChange={({target: {checked}}) => setFilters({...filters, reused: checked})} />
               <label htmlFor="reused">Reused</label>
             </div>
             <div className="checkboxWrapper">
-              <input name="withReddit" type="checkbox" />
+              <input name="withReddit" type="checkbox" checked={filters.reddit} onChange={({target: {checked}}) => setFilters({...filters, reddit: checked})} />
               <label htmlFor="withReddit">With Reddit</label>
             </div>
           </div>
