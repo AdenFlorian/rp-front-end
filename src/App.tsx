@@ -28,7 +28,24 @@ export const App = () => {
     <div className="app">
       <h1 className="pageTitle">SpaceX Launches</h1>
       <div className="launchesContainer">
-        <div className="filters">
+        <div className="tableOptions">
+          <div className="refresh">
+            <button>refresh</button>
+          </div>
+          <div className="filters">
+            <div className="checkboxWrapper">
+              <label htmlFor="landSuccess">Land Success</label>
+              <input name="landSuccess" type="checkbox" />
+            </div>
+            <div className="checkboxWrapper">
+              <label htmlFor="reused">Reused</label>
+              <input name="reused" type="checkbox" />
+            </div>
+            <div className="checkboxWrapper">
+              <label htmlFor="withReddit">With Reddit</label>
+              <input name="withReddit" type="checkbox" />
+            </div>
+          </div>
         </div>
         <table className="rocketLaunchesTable">
           <thead>

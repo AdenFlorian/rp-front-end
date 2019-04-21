@@ -12,19 +12,40 @@
 }
 
 .launchesContainer {
-  display: flex;
-  justify-content: center;
+  max-width: 958px;
+  margin: auto;
 }
 
-$tableRowBorderRadius: 8px;
+$tableBorderRadius: 8px;
 $tableRowBorder: 1px solid #ffffff;
+
+.tableOptions {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.66);
+  border-bottom: none;
+  border-radius: $tableBorderRadius;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: -8px;
+  display: flex;
+  justify-content: space-between;
+  height: 79px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+
+  .filters {
+    display: flex;
+    align-items: center;
+  }
+}
 
 table.rocketLaunchesTable {
   table-layout: fixed;
   border-spacing: 0px 8px;
   width: 100%;
-  max-width: 958px;
-  margin: 32px 64px;
 
   thead {
     tr {
@@ -54,8 +75,8 @@ table.rocketLaunchesTable {
     }
 
     td:first-child {
-      border-top-left-radius: $tableRowBorderRadius;
-      border-bottom-left-radius: $tableRowBorderRadius;
+      border-top-left-radius: $tableBorderRadius;
+      border-bottom-left-radius: $tableBorderRadius;
       border-left: $tableRowBorder;
     }
 
@@ -122,8 +143,8 @@ table.rocketLaunchesTable {
     }
 
     td:last-child {
-      border-top-right-radius: $tableRowBorderRadius;
-      border-bottom-right-radius: $tableRowBorderRadius;
+      border-top-right-radius: $tableBorderRadius;
+      border-bottom-right-radius: $tableBorderRadius;
       border-right: $tableRowBorder;
     }
   }

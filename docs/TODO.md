@@ -6,5 +6,6 @@
     - [√] background image
     - [√] tab title
     - [√] page heading
-    - [ ] styling to match design mockups
+    - [...] tableOptions
+    - [...] styling to match design mockups
 - [√] pull data from API using useState and useEffect
