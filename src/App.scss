@@ -1,11 +1,13 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
-  font-size: calc(20px + 2vmin);
+.pageTitle {
   color: white;
+  font-size: 64px;
   font-weight: 400;
+  line-height: 85px;
+  text-shadow: 0px 2px 4px black;
 }
 
 .launchesContainer {

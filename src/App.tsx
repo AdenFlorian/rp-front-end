@@ -27,8 +27,8 @@ const data = List([
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1 className="App-header">SpaceX Launches</h1>
+      <div className="app">
+        <h1 className="pageTitle">SpaceX Launches</h1>
         <div className="launchesContainer">
           <div className="filters">
           </div>
