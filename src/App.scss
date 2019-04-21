@@ -21,7 +21,7 @@ $tableRowBorder: 1px solid #ffffff;
 
 table.rocketLaunchesTable {
   table-layout: fixed;
-  border-spacing: 0px 16px;
+  border-spacing: 0px 8px;
   width: 100%;
   max-width: 958px;
   margin: 32px 64px;
@@ -35,6 +35,7 @@ table.rocketLaunchesTable {
       color: #043D67;
       font-weight: 400;
       font-size: 17px;
+      line-height: 23px;
     }
   }
 
@@ -42,6 +43,7 @@ table.rocketLaunchesTable {
     background: rgba(255,255,255,0.85);
     height: 64px;
     color: #444444;
+    line-height: 20px;
 
     td {
       border: $tableRowBorder;
@@ -58,6 +60,13 @@ table.rocketLaunchesTable {
     th.badge, td.badge {
       width: 9%;
       text-align: center;
+
+      img {
+        vertical-align: middle;
+        width: 86.09px;
+        height: 65.13px;
+        image-rendering: pixelated;
+      }
     }
 
     th.rocketName, td.rocketName {

@@ -1,9 +1,82 @@
 import React, {Component} from 'react'
 import {List} from 'immutable'
 import {ReactComponent as LinkSvg} from './link.svg'
+import PlaceHolderImg from './placeholder.png'
 import './App.scss'
 
 const data = List([
+  {
+    badgeId: 'a',
+    rocketName: 'Falcon 1',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2005',
+    details: 'Engine failure at 33 seconds and RUD',
+    id: '1',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'b',
+    rocketName: 'Falcon 9',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2006',
+    details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    id: '2',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'a',
+    rocketName: 'Falcon 1',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2005',
+    details: 'Engine failure at 33 seconds and RUD',
+    id: '1',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'b',
+    rocketName: 'Falcon 9',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2006',
+    details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    id: '2',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'a',
+    rocketName: 'Falcon 1',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2005',
+    details: 'Engine failure at 33 seconds and RUD',
+    id: '1',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'b',
+    rocketName: 'Falcon 9',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2006',
+    details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    id: '2',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'a',
+    rocketName: 'Falcon 1',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2005',
+    details: 'Engine failure at 33 seconds and RUD',
+    id: '1',
+    articleLink: 'http://example.com'
+  },
+  {
+    badgeId: 'b',
+    rocketName: 'Falcon 9',
+    rocketType: 'Merlin A',
+    launchDate: '03/25/2006',
+    details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+    id: '2',
+    articleLink: 'http://example.com'
+  },
   {
     badgeId: 'a',
     rocketName: 'Falcon 1',
@@ -45,7 +118,7 @@ class App extends Component {
             {data.map(entry => {
               return (
                 <tr>
-                  <td className="badge">{entry.badgeId}</td>
+                  <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
                   <td className="rocketName">{entry.rocketName}</td>
                   <td className="rocketType">{entry.rocketType}</td>
                   <td className="launchDate">{entry.launchDate}</td>
