@@ -15,7 +15,7 @@ function mapFromResponseToView(responseLaunch: LaunchesResponseEntry): LaunchVie
     return {
         id: responseLaunch.flight_number ? responseLaunch.flight_number.toString() : 'N/A',
         articleLink: responseLaunch.links && responseLaunch.links.article_link,
-        redditLink: responseLaunch.links && responseLaunch.links.reddit_launch,
+        hasRedditLink: hasAnyRedditLinks(responseLaunch),
         badgeUrl: responseLaunch.links && responseLaunch.links.mission_patch_small,
         details: responseLaunch.details || 'N/A',
         launchDate: responseLaunch.launch_date_unix
@@ -24,7 +24,21 @@ function mapFromResponseToView(responseLaunch: LaunchesResponseEntry): LaunchVie
         rocketName: responseLaunch.rocket && responseLaunch.rocket.rocket_name || 'N/A',
         rocketType: responseLaunch.rocket && responseLaunch.rocket.rocket_type || 'N/A',
         reused: wereAnyCoresReused(responseLaunch),
-        successfulLanding: wasSuccessFulLanding(responseLaunch),
+        successfulLanding: wasSuccessfulLanding(responseLaunch),
+    }
+}
+
+/** Returns true if it has any reddit links, false if none */
+function hasAnyRedditLinks(responseLaunch: LaunchesResponseEntry): boolean {
+    if (!responseLaunch.links) return false
+
+    if (responseLaunch.links.reddit_campaign ||
+        responseLaunch.links.reddit_launch ||
+        responseLaunch.links.reddit_media ||
+        responseLaunch.links.reddit_recovery) {
+        return true
+    } else {
+        return false
     }
 }
 
@@ -40,7 +54,7 @@ function wereAnyCoresReused(responseLaunch: LaunchesResponseEntry): boolean | un
 }
 
 /** Returns true if any core landed successfully, false if none did, or undefined if unknown */
-function wasSuccessFulLanding(responseLaunch: LaunchesResponseEntry): boolean | undefined {
+function wasSuccessfulLanding(responseLaunch: LaunchesResponseEntry): boolean | undefined {
     if (!responseLaunch.rocket) return undefined
     if (!responseLaunch.rocket.first_stage) return undefined
     if (!responseLaunch.rocket.first_stage.cores) return undefined
@@ -61,7 +75,10 @@ export interface LaunchesResponseEntry {
         article_link?: string
         mission_patch?: string
         mission_patch_small?: string
-        reddit_launch?: string
+        reddit_campaign?: string,
+        reddit_launch?: string,
+        reddit_recovery?: string,
+        reddit_media?: string,
     }
     rocket?: {
         rocket_id?: string
@@ -92,7 +109,7 @@ export interface LaunchViewData {
     details: string
     id: string
     articleLink?: string
-    redditLink?: string
+    hasRedditLink: boolean
     reused?: boolean
     successfulLanding?: boolean
 }

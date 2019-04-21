@@ -14,7 +14,7 @@ const initialState = List<LaunchViewData>([{
   details: 'Loading...',
   id: 'Loading...',
   articleLink: undefined,
-  redditLink: undefined,
+  hasRedditLink: false,
   reused: undefined,
   successfulLanding: undefined,
 } as LaunchViewData])
@@ -109,7 +109,7 @@ export const App = () => {
 }
 
 const meetsFilters = (filters: FiltersState) => (entry: LaunchViewData) => {
-  if (filters.reddit && !entry.redditLink) return false
+  if (filters.reddit && !entry.hasRedditLink) return false
   if (filters.reused && !entry.reused) return false
   if (filters.successfulLandings && !entry.successfulLanding) return false
 
