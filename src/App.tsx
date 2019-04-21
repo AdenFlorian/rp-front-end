@@ -7,62 +7,44 @@ import './App.scss'
 type Launches = List<LaunchData>
 
 interface LaunchData {
-  badgeId: string
+  badgeId?: string
   rocketName: string
   rocketType: string
   launchDate: string
   details: string
   id: string
-  articleLink: string
+  articleLink?: string
 }
 
 const initialState = List([
   {
-    badgeId: 'a',
-    rocketName: 'Falcon 1',
-    rocketType: 'Merlin A',
-    launchDate: '03/25/2005',
-    details: 'Engine failure at 33 seconds and RUD',
-    id: '1',
-    articleLink: 'http://example.com'
+    badgeId: undefined,
+    rocketName: 'Loading...',
+    rocketType: 'Loading...',
+    launchDate: 'Loading...',
+    details: 'Loading...',
+    id: 'Loading...',
+    articleLink: undefined
   },
-  {
-    badgeId: 'b',
-    rocketName: 'Falcon 9',
-    rocketType: 'Merlin A',
-    launchDate: '03/25/2006',
-    details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    id: '2',
-    articleLink: 'http://example.com'
-  },
-  {
-    badgeId: 'a',
-    rocketName: 'Falcon 1',
-    rocketType: 'Merlin A',
-    launchDate: '03/25/2005',
-    details: 'Engine failure at 33 seconds and RUD',
-    id: '3',
-    articleLink: 'http://example.com',
-  }
-])
+]) as Launches
 
 type LaunchesResponseBody = LaunchesResponseEntry[]
 
 interface LaunchesResponseEntry {
-  details: string
-  flight_number: number
-  launch_date_local: string
-  launch_date_unix: number
-  launch_date_utc: string
-  links: {
-    article_link: string
-    mission_patch: string
-    mission_patch_small: string
+  details?: string
+  flight_number?: number
+  launch_date_local?: string
+  launch_date_unix?: number
+  launch_date_utc?: string
+  links?: {
+    article_link?: string
+    mission_patch?: string
+    mission_patch_small?: string
   }
-  rocket: {
-    rocket_id: string
-    rocket_name: string
-    rocket_type: string
+  rocket?: {
+    rocket_id?: string
+    rocket_name?: string
+    rocket_type?: string
   }
 }
 
@@ -73,16 +55,21 @@ export const App = () => {
     (async () => {
       const response = await fetch('https://api.spacexdata.com/v2/launches')
 
-      const json = await response.json() as LaunchesResponseBody
+      const body = await response.json() as LaunchesResponseBody
 
-      setData(List(json.map(x => ({
-        id: x.flight_number.toString(),
-        articleLink: x.links.article_link,
-        badgeId: x.links.mission_patch,
-        details: x.details,
-        launchDate: new Date(x.launch_date_unix * 1000).toLocaleDateString(),
-        rocketName: x.rocket.rocket_name,
-        rocketType: x.rocket.rocket_type,
+      // Testing empty data
+      body.unshift({})
+
+      setData(List(body.map(x => ({
+        id: x.flight_number ? x.flight_number.toString() : 'N/A',
+        articleLink: x.links && x.links.article_link,
+        badgeId: x.links && x.links.mission_patch,
+        details: x.details || 'N/A',
+        launchDate: x.launch_date_unix
+          ? new Date(x.launch_date_unix * 1000).toLocaleDateString()
+          : 'N/A',
+        rocketName: x.rocket && x.rocket.rocket_name || 'N/A',
+        rocketType: x.rocket && x.rocket.rocket_type || 'N/A',
       }))))
     })()
   }, [])
@@ -115,7 +102,12 @@ export const App = () => {
                   <td className="launchDate">{entry.launchDate}</td>
                   <td className="details">{entry.details}</td>
                   <td className="id">{entry.id}</td>
-                  <td className="articleLink"><a href={entry.articleLink}><LinkSvg /></a></td>
+                  <td className="articleLink">
+                    {entry.articleLink
+                      ? <a href={entry.articleLink}><LinkSvg /></a>
+                      : 'N/A'
+                    }
+                  </td>
                 </tr>
               )
             })}
