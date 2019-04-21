@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {List} from 'immutable'
 import {LaunchesViewData, getLaunches} from './spacex-client'
 import {ReactComponent as LinkSvg} from './link.svg'
+import {ReactComponent as RefreshSvg} from './refresh.svg'
 import PlaceHolderImg from './placeholder.png'
 import './App.scss'
 
@@ -30,7 +31,7 @@ export const App = () => {
       <div className="launchesContainer">
         <div className="tableOptions">
           <div className="refresh">
-            <button>refresh</button>
+            <button><RefreshSvg /></button>
           </div>
           <div className="filters">
             <div className="checkboxWrapper">

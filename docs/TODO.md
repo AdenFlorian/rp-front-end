@@ -7,5 +7,7 @@
     - [√] tab title
     - [√] page heading
     - [...] tableOptions
+        - [ ] refresh button
+        - [ ] filter check boxes
     - [...] styling to match design mockups
 - [√] pull data from API using useState and useEffect
