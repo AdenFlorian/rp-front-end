@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {List} from 'immutable'
+import {ReactComponent as LinkSvg} from './link.svg'
 import './App.scss'
 
 const data = List([
@@ -50,7 +51,7 @@ class App extends Component {
                   <td className="launchDate">{entry.launchDate}</td>
                   <td className="details">{entry.details}</td>
                   <td className="id">{entry.id}</td>
-                  <td className="articleLink">{entry.articleLink}</td>
+                  <td className="articleLink"><a href={entry.articleLink}><LinkSvg /></a></td>
                 </tr>
               )
             })}

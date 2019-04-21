@@ -22,9 +22,17 @@ table.rocketLaunchesTable {
   max-width: 958px;
   margin: 32px 64px;
 
+  tr:first-child {
+    th {
+      color: #043D67;
+      font-weight: 400;
+    }
+  }
+
   tr {
     background-color: #ffffffcc;
     height: 64px;
+    color: #444444;
 
     td:first-child {
       border-top-left-radius: $tableRowBorderRadius;
@@ -67,6 +75,20 @@ table.rocketLaunchesTable {
     th.articleLink, td.articleLink {
       width: 10%;
       text-align: center;
+      
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          height: 1.3em;
+
+          path {
+            fill: #13A2E8;
+          }
+        }
+      }
     }
 
     td:last-child {
