@@ -8,17 +8,29 @@ export async function getLaunches(): Promise<LaunchesViewData> {
     // For testing empty data
     // body.unshift({})
 
-    return List(body.map(x => ({
-        id: x.flight_number ? x.flight_number.toString() : 'N/A',
-        articleLink: x.links && x.links.article_link,
-        badgeUrl: x.links && x.links.mission_patch_small,
-        details: x.details || 'N/A',
-        launchDate: x.launch_date_unix
-            ? new Date(x.launch_date_unix * 1000).toLocaleDateString()
+    return List<LaunchViewData>(body.map(mapFromResponseToView))
+}
+
+function mapFromResponseToView(responseLaunch: LaunchesResponseEntry): LaunchViewData {
+    return {
+        id: responseLaunch.flight_number ? responseLaunch.flight_number.toString() : 'N/A',
+        articleLink: responseLaunch.links && responseLaunch.links.article_link,
+        redditLink: responseLaunch.links && responseLaunch.links.reddit_launch,
+        badgeUrl: responseLaunch.links && responseLaunch.links.mission_patch_small,
+        details: responseLaunch.details || 'N/A',
+        launchDate: responseLaunch.launch_date_unix
+            ? new Date(responseLaunch.launch_date_unix * 1000).toLocaleDateString()
             : 'N/A',
-        rocketName: x.rocket && x.rocket.rocket_name || 'N/A',
-        rocketType: x.rocket && x.rocket.rocket_type || 'N/A',
-    })))
+        rocketName: responseLaunch.rocket && responseLaunch.rocket.rocket_name || 'N/A',
+        rocketType: responseLaunch.rocket && responseLaunch.rocket.rocket_type || 'N/A',
+        reused: responseLaunch.reuse
+            ? (responseLaunch.reuse.core ||
+                responseLaunch.reuse.side_core1 ||
+                responseLaunch.reuse.side_core2 ||
+                responseLaunch.reuse.fairings ||
+                responseLaunch.reuse.capsule)
+            : undefined
+    }
 }
 
 export type LaunchesResponse = LaunchesResponseEntry[]
@@ -33,11 +45,19 @@ export interface LaunchesResponseEntry {
         article_link?: string
         mission_patch?: string
         mission_patch_small?: string
+        reddit_launch?: string
     }
     rocket?: {
         rocket_id?: string
         rocket_name?: string
         rocket_type?: string
+    }
+    reuse?: {
+        core?: boolean
+        side_core1?: boolean
+        side_core2?: boolean
+        fairings?: boolean
+        capsule?: boolean
     }
 }
 
@@ -51,4 +71,6 @@ export interface LaunchViewData {
     details: string
     id: string
     articleLink?: string
+    redditLink?: string
+    reused?: boolean
 }

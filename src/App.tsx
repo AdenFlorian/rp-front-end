@@ -1,31 +1,35 @@
 import React, {useState, useEffect} from 'react'
 import {List} from 'immutable'
-import {LaunchesViewData, getLaunches} from './spacex-client'
+import {getLaunches, LaunchViewData} from './spacex-client'
 import {ReactComponent as LinkSvg} from './link.svg'
 import {ReactComponent as RefreshSvg} from './refresh.svg'
 import PlaceHolderImg from './placeholder.png'
 import './App.scss'
 
-const initialState = List([
-  {
-    badgeId: undefined,
-    rocketName: 'Loading...',
-    rocketType: 'Loading...',
-    launchDate: 'Loading...',
-    details: 'Loading...',
-    id: 'Loading...',
-    articleLink: undefined
-  },
-]) as LaunchesViewData
+const initialState = List<LaunchViewData>([{
+  badgeUrl: undefined,
+  rocketName: 'Loading...',
+  rocketType: 'Loading...',
+  launchDate: 'Loading...',
+  details: 'Loading...',
+  id: 'Loading...',
+  articleLink: undefined,
+  redditLink: undefined,
+  reused: undefined,
+} as LaunchViewData])
+
+const initialFiltersState = Object.freeze({
+  successfulLandings: true,
+  reused: false,
+  reddit: false,
+})
+
+type FiltersState = typeof initialFiltersState
 
 export const App = () => {
   const [data, setData] = useState(initialState)
 
-  const [filters, setFilters] = useState({
-    successfulLandings: true,
-    reused: false,
-    reddit: false,
-  })
+  const [filters, setFilters] = useState(initialFiltersState)
 
   useEffect(() => {
     (async () => loadLatestLaunchData())()
@@ -76,7 +80,7 @@ export const App = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map(entry => {
+            {data.filter(meetsFilters(filters)).map(entry => {
               return (
                 <tr key={entry.id}>
                   <td className={`badge ${!entry.badgeUrl ? 'placeHolder' : ''}`}>
@@ -101,4 +105,11 @@ export const App = () => {
       </div>
     </div>
   )
+}
+
+const meetsFilters = (filters: FiltersState) => (entry: LaunchViewData) => {
+  if (filters.reddit && !entry.redditLink) return false
+  if (filters.reused && !entry.reused) return false
+  return true
+  // TODO
 }
