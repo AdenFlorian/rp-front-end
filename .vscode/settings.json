@@ -1,11 +1,15 @@
 {
     "cSpell.words": [
         "antialiased",
+        "flickr",
         "geomanist",
+        "presskit",
+        "reddit",
         "spacex",
         "truetype",
         "unmount",
-        "webfont"
+        "webfont",
+        "youtube"
     ],
     "tslint.exclude": "./node_modules"
 }
