@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {List} from 'immutable'
 import {ReactComponent as LinkSvg} from './link.svg'
 import PlaceHolderImg from './placeholder.png'
@@ -97,42 +97,38 @@ const data = List([
   },
 ])
 
-class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <h1 className="pageTitle">SpaceX Launches</h1>
-        <div className="launchesContainer">
-          <div className="filters">
-          </div>
-          <table className="rocketLaunchesTable">
-            <tr>
-              <th className="badge">Badge</th>
-              <th className="rocketName">Rocket Name</th>
-              <th className="rocketType">Rocket Type</th>
-              <th className="launchDate">Launch Date</th>
-              <th className="details">Details</th>
-              <th className="id">ID</th>
-              <th className="articleLink">Article</th>
-            </tr>
-            {data.map(entry => {
-              return (
-                <tr>
-                  <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
-                  <td className="rocketName">{entry.rocketName}</td>
-                  <td className="rocketType">{entry.rocketType}</td>
-                  <td className="launchDate">{entry.launchDate}</td>
-                  <td className="details">{entry.details}</td>
-                  <td className="id">{entry.id}</td>
-                  <td className="articleLink"><a href={entry.articleLink}><LinkSvg /></a></td>
-                </tr>
-              )
-            })}
-          </table>
+export const App = () => {
+  return (
+    <div className="app">
+      <h1 className="pageTitle">SpaceX Launches</h1>
+      <div className="launchesContainer">
+        <div className="filters">
         </div>
+        <table className="rocketLaunchesTable">
+          <tr>
+            <th className="badge">Badge</th>
+            <th className="rocketName">Rocket Name</th>
+            <th className="rocketType">Rocket Type</th>
+            <th className="launchDate">Launch Date</th>
+            <th className="details">Details</th>
+            <th className="id">ID</th>
+            <th className="articleLink">Article</th>
+          </tr>
+          {data.map(entry => {
+            return (
+              <tr>
+                <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
+                <td className="rocketName">{entry.rocketName}</td>
+                <td className="rocketType">{entry.rocketType}</td>
+                <td className="launchDate">{entry.launchDate}</td>
+                <td className="details">{entry.details}</td>
+                <td className="id">{entry.id}</td>
+                <td className="articleLink"><a href={entry.articleLink}><LinkSvg /></a></td>
+              </tr>
+            )
+          })}
+        </table>
       </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default App
