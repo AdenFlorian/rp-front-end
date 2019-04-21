@@ -44,16 +44,16 @@ export const App = () => {
           </div>
           <div className="filters">
             <div className="checkboxWrapper">
-              <label htmlFor="landSuccess">Land Success</label>
               <input name="landSuccess" type="checkbox" />
+              <label htmlFor="landSuccess">Land Success</label>
             </div>
             <div className="checkboxWrapper">
-              <label htmlFor="reused">Reused</label>
               <input name="reused" type="checkbox" />
+              <label htmlFor="reused">Reused</label>
             </div>
             <div className="checkboxWrapper">
-              <label htmlFor="withReddit">With Reddit</label>
               <input name="withReddit" type="checkbox" />
+              <label htmlFor="withReddit">With Reddit</label>
             </div>
           </div>
         </div>
