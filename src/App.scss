@@ -46,11 +46,28 @@ $tableOptionsHeight: 79px;
     button {
       background-color: #0000;
       border: none;
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
       
-      svg {
+      svg:first-child {
+        height: 19.3px;
+          
         path:first-child {
           fill: white;
         }
+      }
+
+      svg.refreshCircle {
+        position: absolute;
+        fill: none;
+        stroke: white;
+        stroke-width: 2px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
     }
   }

@@ -35,7 +35,12 @@ export const App = () => {
       <div className="launchesContainer">
         <div className="tableOptions">
           <div className="refresh">
-            <button onClick={loadLatestLaunchData}><RefreshSvg /></button>
+            <button onClick={loadLatestLaunchData}>
+              <RefreshSvg />
+              <svg className="refreshCircle" width="60" height="60">
+                <circle cx="30" cy="30" r="17.5" />
+              </svg>
+            </button>
           </div>
           <div className="filters">
             <div className="checkboxWrapper">
