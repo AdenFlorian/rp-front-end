@@ -1,5 +1,9 @@
 self.__precacheManifest = [
   {
+    "revision": "9aacd12b6b8eded557f953da12dcca97",
+    "url": "/rp-front-end/static/media/link.9aacd12b.svg"
+  },
+  {
     "revision": "7da201004f3c567bae2df158acb0b639",
     "url": "/rp-front-end/static/media/geomanist-regular-webfont.7da20100.ttf"
   },
@@ -12,19 +16,19 @@ self.__precacheManifest = [
     "url": "/rp-front-end/static/js/runtime~main.4669710f.js"
   },
   {
-    "revision": "ea63fac7d16d3a63c1a4",
-    "url": "/rp-front-end/static/js/main.d44094b1.chunk.js"
+    "revision": "84355dbe280f94f3c789",
+    "url": "/rp-front-end/static/js/main.dd2ec701.chunk.js"
   },
   {
-    "revision": "d82afacfb8046780bdff",
-    "url": "/rp-front-end/static/js/2.c272f57a.chunk.js"
+    "revision": "8c0a265809fa7599eca8",
+    "url": "/rp-front-end/static/js/2.416ae113.chunk.js"
   },
   {
-    "revision": "ea63fac7d16d3a63c1a4",
-    "url": "/rp-front-end/static/css/main.9e3c34cd.chunk.css"
+    "revision": "84355dbe280f94f3c789",
+    "url": "/rp-front-end/static/css/main.cd51baa7.chunk.css"
   },
   {
-    "revision": "68ee14b9753e65ed84ce7a19acd37e29",
+    "revision": "b2b66fafbafcfed9389fa32f8e5a8ac3",
     "url": "/rp-front-end/index.html"
   }
 ];
