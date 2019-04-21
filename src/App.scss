@@ -16,6 +16,7 @@
 }
 
 $tableRowBorderRadius: 8px;
+$tableRowBorder: 1px solid #ffffff;
 
 table.rocketLaunchesTable {
   table-layout: fixed;
@@ -36,9 +37,16 @@ table.rocketLaunchesTable {
     height: 64px;
     color: #444444;
 
+    td {
+      border: $tableRowBorder;
+      border-left: none;
+      border-right: none;
+    }
+
     td:first-child {
       border-top-left-radius: $tableRowBorderRadius;
       border-bottom-left-radius: $tableRowBorderRadius;
+      border-left: $tableRowBorder;
     }
 
     th.badge, td.badge {
@@ -96,6 +104,7 @@ table.rocketLaunchesTable {
     td:last-child {
       border-top-right-radius: $tableRowBorderRadius;
       border-bottom-right-radius: $tableRowBorderRadius;
+      border-right: $tableRowBorder;
     }
   }
 }
