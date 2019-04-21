@@ -75,6 +75,19 @@ $tableOptionsHeight: 79px;
   .filters {
     display: flex;
     align-items: center;
+
+    .checkboxWrapper {
+      display: flex;
+      align-items: center;
+      margin: 16px;
+
+      input {
+        margin-right: 8px;
+        width: 22px;
+        height: 22px;
+        // border: 1px solid white;
+      }
+    }
   }
 }
 
