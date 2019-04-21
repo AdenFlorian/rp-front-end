@@ -22,8 +22,12 @@ export const App = () => {
   const [data, setData] = useState(initialState)
 
   useEffect(() => {
-    (async () => setData(await getLaunches()))()
+    (async () => loadLatestLaunchData())()
   }, [])
+
+  async function loadLatestLaunchData() {
+    setData(await getLaunches())
+  }
 
   return (
     <div className="app">
@@ -31,7 +35,7 @@ export const App = () => {
       <div className="launchesContainer">
         <div className="tableOptions">
           <div className="refresh">
-            <button><RefreshSvg /></button>
+            <button onClick={loadLatestLaunchData}><RefreshSvg /></button>
           </div>
           <div className="filters">
             <div className="checkboxWrapper">
