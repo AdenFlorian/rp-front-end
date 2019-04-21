@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {List} from 'immutable'
 import {ReactComponent as LinkSvg} from './link.svg'
 import PlaceHolderImg from './placeholder.png'
 import './App.scss'
 
-const data = List([
+const initialState = List([
   {
     badgeId: 'a',
     rocketName: 'Falcon 1',
@@ -29,7 +29,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2005',
     details: 'Engine failure at 33 seconds and RUD',
-    id: '1',
+    id: '3',
     articleLink: 'http://example.com'
   },
   {
@@ -38,7 +38,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2006',
     details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    id: '2',
+    id: '4',
     articleLink: 'http://example.com'
   },
   {
@@ -47,7 +47,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2005',
     details: 'Engine failure at 33 seconds and RUD',
-    id: '1',
+    id: '5',
     articleLink: 'http://example.com'
   },
   {
@@ -56,7 +56,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2006',
     details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    id: '2',
+    id: '6',
     articleLink: 'http://example.com'
   },
   {
@@ -65,7 +65,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2005',
     details: 'Engine failure at 33 seconds and RUD',
-    id: '1',
+    id: '7',
     articleLink: 'http://example.com'
   },
   {
@@ -74,7 +74,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2006',
     details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    id: '2',
+    id: '8',
     articleLink: 'http://example.com'
   },
   {
@@ -83,7 +83,7 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2005',
     details: 'Engine failure at 33 seconds and RUD',
-    id: '1',
+    id: '9',
     articleLink: 'http://example.com'
   },
   {
@@ -92,12 +92,18 @@ const data = List([
     rocketType: 'Merlin A',
     launchDate: '03/25/2006',
     details: 'Engine failure at 99 seconds and RUD lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-    id: '2',
+    id: '10',
     articleLink: 'http://example.com'
   },
 ])
 
 export const App = () => {
+  const [data, setData] = useState(initialState)
+
+  useEffect(() => {
+    console.log('asd')
+  })
+
   return (
     <div className="app">
       <h1 className="pageTitle">SpaceX Launches</h1>
@@ -106,30 +112,30 @@ export const App = () => {
         </div>
         <table className="rocketLaunchesTable">
           <thead>
-          <tr>
-            <th className="badge">Badge</th>
-            <th className="rocketName">Rocket Name</th>
-            <th className="rocketType">Rocket Type</th>
-            <th className="launchDate">Launch Date</th>
-            <th className="details">Details</th>
-            <th className="id">ID</th>
-            <th className="articleLink">Article</th>
-          </tr>
+            <tr>
+              <th className="badge">Badge</th>
+              <th className="rocketName">Rocket Name</th>
+              <th className="rocketType">Rocket Type</th>
+              <th className="launchDate">Launch Date</th>
+              <th className="details">Details</th>
+              <th className="id">ID</th>
+              <th className="articleLink">Article</th>
+            </tr>
           </thead>
           <tbody>
-          {data.map(entry => {
-            return (
+            {data.map(entry => {
+              return (
                 <tr key={entry.id}>
-                <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
-                <td className="rocketName">{entry.rocketName}</td>
-                <td className="rocketType">{entry.rocketType}</td>
-                <td className="launchDate">{entry.launchDate}</td>
-                <td className="details">{entry.details}</td>
-                <td className="id">{entry.id}</td>
-                <td className="articleLink"><a href={entry.articleLink}><LinkSvg /></a></td>
-              </tr>
-            )
-          })}
+                  <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
+                  <td className="rocketName">{entry.rocketName}</td>
+                  <td className="rocketType">{entry.rocketType}</td>
+                  <td className="launchDate">{entry.launchDate}</td>
+                  <td className="details">{entry.details}</td>
+                  <td className="id">{entry.id}</td>
+                  <td className="articleLink"><a href={entry.articleLink}><LinkSvg /></a></td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
