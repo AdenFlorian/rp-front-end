@@ -94,7 +94,7 @@ export const App = () => {
                   <td className="id">{entry.id}</td>
                   <td className="articleLink">
                     {entry.articleLink
-                      ? <a href={entry.articleLink}><LinkSvg /></a>
+                      ? <a href={entry.articleLink} target="_blank"><LinkSvg /></a>
                       : 'N/A'
                     }
                   </td>
