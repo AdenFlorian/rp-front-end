@@ -105,6 +105,7 @@ export const App = () => {
         <div className="filters">
         </div>
         <table className="rocketLaunchesTable">
+          <thead>
           <tr>
             <th className="badge">Badge</th>
             <th className="rocketName">Rocket Name</th>
@@ -114,9 +115,11 @@ export const App = () => {
             <th className="id">ID</th>
             <th className="articleLink">Article</th>
           </tr>
+          </thead>
+          <tbody>
           {data.map(entry => {
             return (
-              <tr>
+                <tr key={entry.id}>
                 <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
                 <td className="rocketName">{entry.rocketName}</td>
                 <td className="rocketType">{entry.rocketType}</td>
@@ -127,6 +130,7 @@ export const App = () => {
               </tr>
             )
           })}
+          </tbody>
         </table>
       </div>
     </div>
