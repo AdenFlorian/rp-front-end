@@ -23,14 +23,30 @@ function mapFromResponseToView(responseLaunch: LaunchesResponseEntry): LaunchVie
             : 'N/A',
         rocketName: responseLaunch.rocket && responseLaunch.rocket.rocket_name || 'N/A',
         rocketType: responseLaunch.rocket && responseLaunch.rocket.rocket_type || 'N/A',
-        reused: responseLaunch.reuse
-            ? (responseLaunch.reuse.core ||
-                responseLaunch.reuse.side_core1 ||
-                responseLaunch.reuse.side_core2 ||
-                responseLaunch.reuse.fairings ||
-                responseLaunch.reuse.capsule)
-            : undefined
+        reused: wereAnyCoresReused(responseLaunch),
+        successfulLanding: wasSuccessFulLanding(responseLaunch),
     }
+}
+
+/** Returns true if any cores were reused, false if none did, or undefined if unknown */
+function wereAnyCoresReused(responseLaunch: LaunchesResponseEntry): boolean | undefined {
+    return responseLaunch.reuse
+        ? (responseLaunch.reuse.core ||
+            responseLaunch.reuse.side_core1 ||
+            responseLaunch.reuse.side_core2 ||
+            responseLaunch.reuse.fairings ||
+            responseLaunch.reuse.capsule)
+        : undefined
+}
+
+/** Returns true if any core landed successfully, false if none did, or undefined if unknown */
+function wasSuccessFulLanding(responseLaunch: LaunchesResponseEntry): boolean | undefined {
+    if (!responseLaunch.rocket) return undefined
+    if (!responseLaunch.rocket.first_stage) return undefined
+    if (!responseLaunch.rocket.first_stage.cores) return undefined
+    if (responseLaunch.rocket.first_stage.cores.every(x => x.land_success === undefined)) return undefined
+
+    return responseLaunch.rocket.first_stage.cores.some(x => x.land_success === true)
 }
 
 export type LaunchesResponse = LaunchesResponseEntry[]
@@ -51,6 +67,11 @@ export interface LaunchesResponseEntry {
         rocket_id?: string
         rocket_name?: string
         rocket_type?: string
+        first_stage?: {
+            cores?: [{
+                land_success?: boolean
+            }]
+        }
     }
     reuse?: {
         core?: boolean
@@ -73,4 +94,5 @@ export interface LaunchViewData {
     articleLink?: string
     redditLink?: string
     reused?: boolean
+    successfulLanding?: boolean
 }

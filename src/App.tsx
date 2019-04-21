@@ -16,6 +16,7 @@ const initialState = List<LaunchViewData>([{
   articleLink: undefined,
   redditLink: undefined,
   reused: undefined,
+  successfulLanding: undefined,
 } as LaunchViewData])
 
 const initialFiltersState = Object.freeze({
@@ -110,6 +111,7 @@ export const App = () => {
 const meetsFilters = (filters: FiltersState) => (entry: LaunchViewData) => {
   if (filters.reddit && !entry.redditLink) return false
   if (filters.reused && !entry.reused) return false
+  if (filters.successfulLandings && !entry.successfulLanding) return false
+
   return true
-  // TODO
 }
