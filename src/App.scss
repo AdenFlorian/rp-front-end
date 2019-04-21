@@ -65,7 +65,11 @@ table.rocketLaunchesTable {
 
       img {
         vertical-align: middle;
-        image-rendering: pixelated;
+        height: 32px;
+      }
+
+      &.placeHolder img {
+        vertical-align: middle;
         height: 64px;
       }
     }

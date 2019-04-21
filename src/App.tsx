@@ -7,7 +7,7 @@ import './App.scss'
 type Launches = List<LaunchData>
 
 interface LaunchData {
-  badgeId?: string
+  badgeUrl?: string
   rocketName: string
   rocketType: string
   launchDate: string
@@ -57,13 +57,13 @@ export const App = () => {
 
       const body = await response.json() as LaunchesResponseBody
 
-      // Testing empty data
-      body.unshift({})
+      // For testing empty data
+      // body.unshift({})
 
       setData(List(body.map(x => ({
         id: x.flight_number ? x.flight_number.toString() : 'N/A',
         articleLink: x.links && x.links.article_link,
-        badgeId: x.links && x.links.mission_patch,
+        badgeUrl: x.links && x.links.mission_patch_small,
         details: x.details || 'N/A',
         launchDate: x.launch_date_unix
           ? new Date(x.launch_date_unix * 1000).toLocaleDateString()
@@ -96,7 +96,9 @@ export const App = () => {
             {data.map(entry => {
               return (
                 <tr key={entry.id}>
-                  <td className="badge"><img src={PlaceHolderImg} alt="badge image" /></td>
+                  <td className={`badge ${!entry.badgeUrl ? 'placeHolder' : ''}`}>
+                    <img src={entry.badgeUrl || PlaceHolderImg} alt="badge image" />
+                  </td>
                   <td className="rocketName">{entry.rocketName}</td>
                   <td className="rocketType">{entry.rocketType}</td>
                   <td className="launchDate">{entry.launchDate}</td>
