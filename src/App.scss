@@ -142,12 +142,12 @@ table.rocketLaunchesTable {
   }
 
   tr {
-    background: rgba(255,255,255,0.85);
     height: 64px;
     color: #444444;
     line-height: 20px;
 
     td {
+      background: rgba(255,255,255,0.85);
       border: $tableRowBorder;
       border-left: none;
       border-right: none;
